@@ -3,30 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "commitizen": "^4.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.0",
     "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "styled-components": "^5.3.0",
+    "typescript": "~4.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint:css": "stylelint './src/**/*.tsx'",
+    "lint:tsx": "eslint ./src --ext .ts,.tsx",
+    "lint:tsx:fix": "eslint --fix ./src --ext ts,.tsx",
+    "prettier": "prettier \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "prettier:fix": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "browserslist": {
     "production": [
@@ -39,5 +44,49 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@types/styled-components": "^5.1.12",
+    "cz": "^1.8.2",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "stylelint": "^13.13.1"
+  },
+  "importSort": {
+    ".ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "resolutions": {
+    "styled-components": "^5",
+    "babel-loader": "8.1.0"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "unused-imports"
+    ],
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "max-len": [
+        0,
+        120,
+        2
+      ],
+      "no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "error"
+    }
   }
 }
